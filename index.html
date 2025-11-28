@@ -21,6 +21,48 @@
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
+    <div>
+
+  <h3>Data Sensor Cuaca</h3>
+
+  <p id="cuaca">Memuat data...</p>
+
+</div>
+
+
+
+<script>
+
+  const apiKey = 'ce3cd17631354001235740f16b6e75d6
+';
+
+  const city = 'Bandung';
+
+
+
+  fetch(`https://api.openweathermap.org/data/2.5/weather?q=city   appid={apiKey}&units=metric`)
+
+    .then(response => response.json())
+
+    .then(data => {
+
+      const suhu = data.main.temp;
+
+      const kelembapan = data.main.humidity;
+
+      document.getElementById("cuaca").innerText =
+
+        `Suhu: suhu°C, Kelembapan:{kelembapan}%`;
+
+    })
+
+    .catch(error => {
+
+      document.getElementById("cuaca").innerText = "Gagal mengambil data.";
+
+    });
+
+</script>
 
 <body id="page-top">
 
